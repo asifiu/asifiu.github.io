@@ -15,6 +15,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="style.css">
+  <script src="site.js"></script>
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "Person", "name": "Asif Iqbal",
    "jobTitle": "IT Support Assistant", "image": "https://asifiu.github.io/img/asif-iqbal.jpg",
@@ -31,13 +32,17 @@
   <header class="site">
     <div class="page site-inner">
       <a class="mark" href="#top"><img src="favicon.svg" alt="" width="28" height="28">Asif Iqbal</a>
-      <nav aria-label="Sections">
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
+      <nav id="site-nav" aria-label="Sections">
         <a href="#roles">Roles</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cv" href="cv/Asif_Iqbal_CV_IT_Support.pdf" data-goatcounter-click="cv-it-support" download>Download CV</a>
+        <a class="nav-cv" href="cv/Asif_Iqbal_CV_IT_Support.pdf" data-goatcounter-click="cv-it-support" data-cv="it" download>Download CV</a>
+        <a class="nav-cv" href="cv/Asif_Iqbal_CV_Data_Analyst.pdf" data-goatcounter-click="cv-data-analyst" data-cv="data" download hidden>Download CV</a>
+        <a class="nav-cv" href="cv/Asif_Iqbal_CV_Electrical_Engineer.pdf" data-goatcounter-click="cv-electrical" data-cv="ee" download hidden>Download CV</a>
       </nav>
     </div>
   </header>
@@ -52,9 +57,20 @@
         <div class="intro-body">
           <p class="lede">I am an IT support assistant in Berlin. Since October 2024 I have worked on client sites such as the Vantage data center (BER 11), JPMorgan Chase offices and Adidas and JD stores: installing network equipment, setting up hardware for users and solving Windows 11 and Microsoft 365 problems.</p>
           <p>Before that I spent eight years as an electrical project engineer in Dhaka, and this autumn I submitted my M.Sc. thesis in Data Science at IU in Berlin.</p>
-          <p class="avail"><strong>Available immediately</strong> for full-time work in Berlin or anywhere in Germany.</p>
+          <p class="avail"><span class="tag">Available immediately</span> for full-time work in Berlin or anywhere in Germany.</p>
+
+          <div class="focus" role="group" aria-labelledby="focusLabel" hidden>
+            <span class="focus-label" id="focusLabel">Hiring for</span>
+            <div class="segmented">
+              <button type="button" data-role="it" aria-pressed="true">IT support</button>
+              <button type="button" data-role="data" aria-pressed="false">Data analysis</button>
+              <button type="button" data-role="ee" aria-pressed="false">Engineering</button>
+            </div>
+          </div>
           <p class="actions">
-            <a class="button" href="cv/Asif_Iqbal_CV_IT_Support.pdf" data-goatcounter-click="cv-it-support" download>Download my CV (PDF)</a>
+            <a class="button" href="cv/Asif_Iqbal_CV_IT_Support.pdf" data-goatcounter-click="cv-it-support" data-cv="it" download>Download my CV (PDF)</a>
+            <a class="button" href="cv/Asif_Iqbal_CV_Data_Analyst.pdf" data-goatcounter-click="cv-data-analyst" data-cv="data" download hidden>Download my data analyst CV (PDF)</a>
+            <a class="button" href="cv/Asif_Iqbal_CV_Electrical_Engineer.pdf" data-goatcounter-click="cv-electrical" data-cv="ee" download hidden>Download my engineering CV (PDF)</a>
             <a class="button secondary" href="mailto:asifiqbal.eee@gmail.com" data-goatcounter-click="email">Email me</a>
           </p>
         </div>
@@ -77,35 +93,35 @@
       <div class="page">
         <h2>Roles I am applying for</h2>
         <div class="roles">
-          <article>
-            <h3>IT support and system administration</h3>
+          <article class="role" data-role="it">
+            <div class="role-head"><h3>IT support and system administration</h3><span class="picked" hidden>Your choice</span></div>
             <ul>
               <li>1st and 2nd level support, on site and remote</li>
               <li>Switches, firewalls, wireless access points, firmware updates</li>
               <li>Windows 11, Microsoft 365, Intune; laptops, printers, POS</li>
               <li>Data center work: rack and stack, cabling, remote hands</li>
             </ul>
-            <a class="role-link" href="cv/Asif_Iqbal_CV_IT_Support.pdf" data-goatcounter-click="cv-it-support" download>CV for IT roles (PDF)</a>
+            <p class="role-foot"><a class="button secondary small" href="cv/Asif_Iqbal_CV_IT_Support.pdf" data-goatcounter-click="cv-it-support" download>CV for IT roles (PDF)</a></p>
           </article>
-          <article>
-            <h3>Data analysis</h3>
+          <article class="role" data-role="data">
+            <div class="role-head"><h3>Data analysis</h3><span class="picked" hidden>Your choice</span></div>
             <ul>
               <li>Python from raw data to final figures</li>
               <li>Evaluation that holds up: cross-validation, AUC, significance tests</li>
               <li>Finding data leaks before they become wrong conclusions</li>
               <li>Clear charts and written reports; SQL basics</li>
             </ul>
-            <a class="role-link" href="cv/Asif_Iqbal_CV_Data_Analyst.pdf" data-goatcounter-click="cv-data-analyst" download>CV for data roles (PDF)</a>
+            <p class="role-foot"><a class="button secondary small" href="cv/Asif_Iqbal_CV_Data_Analyst.pdf" data-goatcounter-click="cv-data-analyst" download>CV for data roles (PDF)</a></p>
           </article>
-          <article>
-            <h3>Electrical and project engineering</h3>
+          <article class="role" data-role="ee">
+            <div class="role-head"><h3>Electrical and project engineering</h3><span class="picked" hidden>Your choice</span></div>
             <ul>
               <li>Low-voltage substation design and lightning protection</li>
               <li>AutoCAD layouts and as-built drawings</li>
               <li>Proposals, budgets and cost tracking</li>
               <li>Site supervision from planning to handover</li>
             </ul>
-            <a class="role-link" href="cv/Asif_Iqbal_CV_Electrical_Engineer.pdf" data-goatcounter-click="cv-electrical" download>CV for engineering roles (PDF)</a>
+            <p class="role-foot"><a class="button secondary small" href="cv/Asif_Iqbal_CV_Electrical_Engineer.pdf" data-goatcounter-click="cv-electrical" download>CV for engineering roles (PDF)</a></p>
           </article>
         </div>
       </div>
@@ -155,7 +171,7 @@
               <li>Combined XGBoost on voice with DenseNet121 on images; explained the decisions with SHAP and Grad-CAM.</li>
               <li>30 automated checks tie every number in the thesis to the data.</li>
             </ul>
-            <p class="note">pandas, NumPy, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, statsmodels, matplotlib</p>
+            <p class="stack">pandas, NumPy, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, statsmodels, matplotlib</p>
           </div>
           <div class="figures">
             <figure class="chart">
@@ -209,13 +225,14 @@
       </article>
 
       <div class="two-col">
-        <article class="entry">
+        <article class="entry card">
           <div class="entry-head"><h3>Ideal Function Matcher</h3><span class="dates">2025</span></div>
-          <p class="org">Programming with Python, IU <span><a href="https://github.com/asifiu/iu-programming-assignment" data-goatcounter-click="github-ideal-function-matcher">Code on GitHub</a></span></p>
+          <p class="org">Programming with Python, IU <span>Python</span></p>
           <p>Matches measured data to the best of 50 ideal functions with least squares and a √2 threshold rule, stores the results in SQLite and draws an interactive Bokeh chart. Tested with pytest.</p>
-          <p class="note">pandas, NumPy, SQLAlchemy, Bokeh, pytest</p>
+          <p class="stack">pandas, NumPy, SQLAlchemy, Bokeh, pytest</p>
+          <p class="card-foot"><a class="button secondary small" href="https://github.com/asifiu/iu-programming-assignment" data-goatcounter-click="github-ideal-function-matcher">Code on GitHub</a></p>
         </article>
-        <article class="entry">
+        <article class="entry card">
           <div class="entry-head"><h3>13 Buffer Godown Complex</h3><span class="dates">Taufika</span></div>
           <p class="org">Government of Bangladesh <span>Electrical works</span></p>
           <p>Electrical works for a government storage complex: low-voltage substation design, lightning protection, AutoCAD layouts and as-built drawings, budgets, and site supervision through to handover.</p>
@@ -236,14 +253,14 @@
     <section class="block page" id="skills">
       <h2>Skills</h2>
       <dl class="skills">
-        <div><dt>Support</dt><dd>1st and 2nd level support, ticket and incident handling, ITIL basics, documentation and hand-over notes</dd></div>
-        <div><dt>Microsoft</dt><dd>Windows 11, Windows Server, Microsoft 365 (Teams, Outlook, SharePoint, OneDrive), Intune, Active Directory (basic)</dd></div>
-        <div><dt>Networking</dt><dd>switches, firewalls, wireless access points, firmware updates, TCP/IP, DNS, DHCP, connectivity troubleshooting, Cisco Packet Tracer</dd></div>
-        <div><dt>Data center</dt><dd>rack and stack, structured cabling, remote hands; laptops, desktops, printers, POS systems</dd></div>
-        <div><dt>Remote support</dt><dd>TeamViewer, AnyDesk, Quick Assist, PuTTY</dd></div>
-        <div><dt>Data</dt><dd>Python (pandas, NumPy, SciPy, statsmodels, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, matplotlib), Jupyter, SQL basics (PostgreSQL)</dd></div>
-        <div><dt>Engineering</dt><dd>LT substation design, lightning protection, AutoCAD, budgeting, site supervision</dd></div>
-        <div><dt>Tools</dt><dd>Git and GitHub, VS Code, Linux basics (Ubuntu), Excel</dd></div>
+        <div data-for="it"><dt>Support</dt><dd>1st and 2nd level support, ticket and incident handling, ITIL basics, documentation and hand-over notes</dd></div>
+        <div data-for="it"><dt>Microsoft</dt><dd>Windows 11, Windows Server, Microsoft 365 (Teams, Outlook, SharePoint, OneDrive), Intune, Active Directory (basic)</dd></div>
+        <div data-for="it"><dt>Networking</dt><dd>switches, firewalls, wireless access points, firmware updates, TCP/IP, DNS, DHCP, connectivity troubleshooting, Cisco Packet Tracer</dd></div>
+        <div data-for="it"><dt>Data center</dt><dd>rack and stack, structured cabling, remote hands; laptops, desktops, printers, POS systems</dd></div>
+        <div data-for="it"><dt>Remote support</dt><dd>TeamViewer, AnyDesk, Quick Assist, PuTTY</dd></div>
+        <div data-for="data"><dt>Data</dt><dd>Python (pandas, NumPy, SciPy, statsmodels, scikit-learn, XGBoost, TensorFlow/Keras, SHAP, matplotlib), Jupyter, SQL basics (PostgreSQL)</dd></div>
+        <div data-for="ee"><dt>Engineering</dt><dd>LT substation design, lightning protection, AutoCAD, budgeting, site supervision</dd></div>
+        <div data-for="it data"><dt>Tools</dt><dd>Git and GitHub, VS Code, Linux basics (Ubuntu), Excel</dd></div>
       </dl>
     </section>
 

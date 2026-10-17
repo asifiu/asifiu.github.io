@@ -9,6 +9,7 @@
   --ink: #1d1d1f;
   --muted: #5a6470;
   --rule: #c9d3dc;
+  --rule-strong: #7b8794;   /* borders of fields and boxes that must be seen: 3.7 : 1 on white */
   --paper: #ffffff;
   --mist: #f3f5f7;
   /* colour: status (dashboard only) */
@@ -20,6 +21,7 @@
   /* type */
   --font-display: Cambria, Georgia, "Times New Roman", serif;
   --font-text: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+  --font-code: Consolas, "Cascadia Mono", ui-monospace, Menlo, monospace;  /* tool names only; system fonts */
   --text-xs: 13px;
   --text-sm: 15px;
   --text-md: 17px;
@@ -40,6 +42,8 @@
   --radius-lg: 4px;
   --shadow: none;           /* separate with hairlines, not shadows */
   --focus: 0 0 0 3px #9cc3dc;
+  --control: 40px;          /* height of buttons and fields */
+  --touch: 44px;            /* the same on phones and touch screens */
   --measure: 68ch;          /* longest reading line */
   --page: 1080px;
   --transition: 120ms ease; /* colour changes only; nothing moves on its own */
