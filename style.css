@@ -188,3 +188,12 @@ a:hover { color: var(--navy-dark); }
   .band.navy h2, .quote p, .after-quote { color: var(--ink); }
   a { color: var(--ink); text-decoration: none; }
 }
+
+/* privacy page */
+.legal { max-width: 760px; padding-top: var(--s7); }
+.legal h1 { font: 700 var(--text-2xl)/1.1 var(--font-display); color: var(--navy); }
+.legal .headline { color: var(--muted); font-size: var(--text-sm); }
+.legal .block { padding-top: var(--s6); }
+.legal-list { padding-left: 20px; }
+.legal-list li { margin-bottom: var(--s2); }
+.legal-list li::marker { color: var(--navy); }
