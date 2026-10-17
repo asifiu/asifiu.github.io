@@ -81,6 +81,8 @@ a:hover { color: var(--navy-dark); }
 .facts div { padding: var(--s5); border: var(--hairline); border-top: 3px solid var(--navy); border-radius: var(--radius-lg); background: var(--paper); }
 .facts dt { font: 700 var(--text-2xl)/1.1 var(--font-display); color: var(--navy); }
 .facts dd { margin: var(--s2) 0 0; color: var(--muted); font-size: var(--text-sm); }
+.facts .is-picked { border-color: var(--navy); background: var(--navy-tint); }
+.facts .is-picked dd { color: var(--ink); }
 
 /* full-width bands */
 .band { margin-top: var(--s8); padding: var(--s8) 0; }
@@ -143,15 +145,35 @@ a:hover { color: var(--navy-dark); }
 .chart { margin: 0; padding-top: var(--s3); border-top: var(--hairline); }
 .chart svg { display: block; width: 100%; height: auto; }
 .chart text { font: 14px var(--font-text); fill: var(--ink); }
-.chart .lbl, .chart .people text, .chart .legend text { fill: var(--muted); }
-.chart .people text, .chart .legend text { font-size: 12px; }
+.chart .lbl, .chart .person, .chart .legend text, .chart .sub, .chart .col, .chart .tick { fill: var(--muted); }
+.chart .person, .chart .legend text, .chart .sub, .chart .col, .chart .tick, .chart .note,
+.chart [class^="note-"] { font-size: 12px; }
 .chart .head { font-weight: 700; fill: var(--navy); }
+.chart .sub { font-weight: 400; }
+.chart .col { font-weight: 700; text-anchor: middle; }
 .chart .val { font-weight: 700; }
 .chart .strong { fill: var(--navy); }
 .chart .cmp, .chart .test rect, .chart .test-key { fill: var(--slate); }
 .chart .main, .chart .train rect, .chart .train-key { fill: var(--navy); }
-.chart .axis { stroke: var(--rule); stroke-width: 1; }
+.chart .box { fill: none; stroke: var(--rule-strong); stroke-width: 1; }
+.chart .divider { stroke: var(--rule-strong); stroke-width: 1; stroke-dasharray: 4 3; }
+.chart .grid { stroke: var(--rule); stroke-width: 1; }
+.chart .chance { stroke: var(--rule-strong); stroke-width: 1; stroke-dasharray: 4 3; }
+.chart .stem { stroke: var(--rule-strong); stroke-width: 1.5; }
+.chart .bracket, .chart .bracket-ok { fill: none; stroke: var(--navy); stroke-width: 1.5; }
+.chart .note, .chart .note-ok { fill: var(--navy); font-weight: 700; }
+.chart .note-bg { fill: var(--paper); }
+/* dark red only to point at the problem (the leak), always with words next to it */
+.chart .leak-arc { fill: none; stroke: var(--bad-ink); stroke-width: 1.5; stroke-dasharray: 3 2; }
+.chart .bracket-bad { fill: none; stroke: var(--bad-ink); stroke-width: 1.5; }
+.chart .note-bad { fill: var(--bad-ink); font-weight: 700; }
+.chart .band { fill: var(--navy-tint); stroke: var(--rule-strong); stroke-width: 0.75; }
+.chart .ideal { fill: none; stroke: var(--navy); stroke-width: 2; }
+.chart .hit { fill: var(--navy); }
+.chart .miss { fill: var(--paper); stroke: var(--slate); stroke-width: 2; }
 .chart figcaption { color: var(--muted); font-size: var(--text-sm); margin-top: var(--s2); }
+.sketch { margin: var(--s2) 0 var(--s3); }
+.sketch svg { max-width: 380px; }
 
 /* how I work (the one navy band) */
 .quote { margin: 0; max-width: 780px; }

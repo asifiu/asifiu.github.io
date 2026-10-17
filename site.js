@@ -44,7 +44,11 @@ function setUpSectionHighlight() {
   const update = () => {
     const line = window.innerHeight * 0.35;  // the section that crosses this line is the one being read
     let current = null;
-    for (const section of sections) if (section.getBoundingClientRect().top <= line) current = section;
+    let nearest = -Infinity;
+    for (const section of sections) {  // by position, because the role switcher can change the order
+      const top = section.getBoundingClientRect().top;
+      if (top <= line && top > nearest) { nearest = top; current = section; }
+    }
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = sections.at(-1);
     for (const link of links) {
       if (current && link.getAttribute("href") === `#${current.id}`) link.setAttribute("aria-current", "true");
@@ -77,9 +81,22 @@ function choose(role, fromClick) {
   for (const button of document.querySelectorAll(".focus button[data-role]")) {
     button.setAttribute("aria-pressed", String(button.dataset.role === role));
   }
-  // The hero button and the menu button download the CV for this role (each link keeps its own
+  // Everything written for certain roles (data-show="data" or data-show="it ee") shows only for them:
+  // the headline, the introduction, and the Download CV buttons (each CV link keeps its own
   // GoatCounter name, so the stats still show which CV was taken).
-  for (const link of document.querySelectorAll("a[data-cv]")) link.hidden = link.dataset.cv !== role;
+  for (const item of document.querySelectorAll("[data-show]")) item.hidden = !item.dataset.show.split(" ").includes(role);
+
+  // The figure that matters most for this role gets a navy frame.
+  for (const fact of document.querySelectorAll(".facts [data-for]")) fact.classList.toggle("is-picked", fact.dataset.for === role);
+
+  // For data roles the thesis is the strongest proof, so Projects comes before Experience,
+  // on the page and in the menu. Every other role keeps Experience first.
+  const experience = document.getElementById("experience");
+  const projects = document.getElementById("projects");
+  const menuExperience = document.querySelector('#site-nav a[href="#experience"]');
+  const menuProjects = document.querySelector('#site-nav a[href="#projects"]');
+  if (role === "data") { experience.before(projects); menuExperience.before(menuProjects); }
+  else { projects.before(experience); menuProjects.before(menuExperience); }
 
   // The chosen role comes first in Roles, and its skills come first in Skills.
   const roles = document.querySelector(".roles");
