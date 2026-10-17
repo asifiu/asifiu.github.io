@@ -1,0 +1,46 @@
+/* Asif Iqbal brand tokens (see ../BRAND.md). The one place to change colours, type and spacing.
+   Copied into portfolio/ and dashboard/static/ by sync_brand.py; edit here, then run it. */
+:root {
+  /* colour: brand */
+  --navy: #1b4965;
+  --navy-dark: #13364b;     /* hover and pressed */
+  --navy-tint: #e8eef2;     /* selected and hover backgrounds */
+  /* colour: neutral */
+  --ink: #1d1d1f;
+  --muted: #5a6470;
+  --rule: #c9d3dc;
+  --paper: #ffffff;
+  --mist: #f3f5f7;
+  /* colour: status (dashboard only) */
+  --act-ink: #8a5a0b;  --act-bg: #fbf1dd;    /* needs your action */
+  --done-ink: #2f6b3a; --done-bg: #e6f1e8;   /* done, applied */
+  --bad-ink: #9b2c2c;  --bad-bg: #f7e4e4;    /* problem, rejected */
+  --slate: #8d9aa8;                           /* chart comparison series */
+
+  /* type */
+  --font-display: Cambria, Georgia, "Times New Roman", serif;
+  --font-text: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+  --text-xs: 13px;
+  --text-sm: 15px;
+  --text-md: 17px;
+  --text-lg: 20px;
+  --text-xl: 26px;
+  --text-2xl: 34px;
+  --text-3xl: clamp(40px, 6vw, 56px);
+  --label-tracking: 0.12em;
+  --leading: 1.55;
+
+  /* space (4 px steps) */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+
+  /* lines, corners, depth, motion */
+  --hairline: 1px solid var(--rule);
+  --radius: 3px;
+  --radius-lg: 4px;
+  --shadow: none;           /* separate with hairlines, not shadows */
+  --focus: 0 0 0 3px #9cc3dc;
+  --measure: 68ch;          /* longest reading line */
+  --page: 1080px;
+  --transition: 120ms ease; /* colour changes only; nothing moves on its own */
+}
