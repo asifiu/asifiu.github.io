@@ -1,8 +1,9 @@
-/* The portfolio's own accent colour: petrol teal (Asif's choice, 18 October 2026).
+/* The portfolio's own accent colour: Swiss red (Asif's choice, 18 October 2026; teal before that).
    Loaded after tokens.css on the portfolio only; the CVs and the dashboard stay navy.
+   Readable as text: 5.3 : 1 on white, 4.75 : 1 on the grey bands.
    Copied into portfolio/theme.css by sync_brand.py; edit here, then run it. */
 :root {
-  --accent: #0f5c63;        /* name, headings, links, buttons: 7.7 : 1 on white */
-  --accent-dark: #0a454a;   /* hover and pressed: 10.7 : 1 */
-  --accent-tint: #e3f0f0;   /* selected and hover backgrounds; accent text on it 6.6 : 1 */
+  --accent: #d21f1a;
+  --accent-dark: #a8180f;
+  --accent-tint: #fbe9e8;
 }
