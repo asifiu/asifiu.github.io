@@ -147,4 +147,11 @@ function choose(role, fromClick) {
     if (role === "it") url.searchParams.delete("for"); else url.searchParams.set("for", role);
     history.replaceState(null, "", url);
   }
+
+  // The EN | DE link keeps the chosen role, so /?for=data opens /de/?for=data and not the IT view.
+  const lang = document.querySelector("a.lang");
+  if (lang) {
+    lang.dataset.base ??= lang.getAttribute("href");
+    lang.setAttribute("href", role === "it" ? lang.dataset.base : `${lang.dataset.base}?for=${role}`);
+  }
 }
