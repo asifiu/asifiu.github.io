@@ -16,14 +16,16 @@ p { margin: 0 0 var(--s3); }
 a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color var(--transition); }
 a:hover { color: var(--navy-dark); }
 :focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--radius); }
+a, button, summary, label { touch-action: manipulation; }  /* no tap delay on phones */
 .page { max-width: var(--page); margin: 0 auto; padding: 0 var(--s5); }
 .skip { position: absolute; left: -9999px; }
-.skip:focus { left: var(--s4); top: var(--s4); background: var(--paper); padding: var(--s2) var(--s3); z-index: 10; }
+.skip:focus { left: var(--s4); top: var(--s4); display: inline-flex; align-items: center; min-height: var(--touch);
+  background: var(--paper); padding: 0 var(--s4); z-index: 10; }
 
 /* header: sticky, solid white, the section you are reading is underlined */
 .site { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: var(--hairline); }
 .site-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--s5); min-height: 64px; }
-.mark { display: inline-flex; align-items: center; gap: var(--s2); font: 700 19px var(--font-display); color: var(--navy); text-decoration: none; }
+.mark { display: inline-flex; align-items: center; gap: var(--s2); min-height: var(--touch); font: 700 19px var(--font-display); color: var(--navy); text-decoration: none; }
 .site nav { display: flex; align-items: stretch; align-self: stretch; gap: var(--s1); }
 .site nav a { display: flex; align-items: center; padding: 0 var(--s3); color: var(--ink); text-decoration: none;
   font-size: var(--text-sm); border-bottom: 2px solid transparent; margin-bottom: -1px;
@@ -62,7 +64,8 @@ a:hover { color: var(--navy-dark); }
 .segmented button:first-child { border-left: 0; }
 .segmented button:hover { background: var(--navy-tint); color: var(--navy); }
 .segmented button[aria-pressed="true"] { background: var(--navy); color: var(--paper); font-weight: 700; }
-.segmented button:focus-visible { position: relative; z-index: 1; border-radius: 0; }
+.segmented button:focus-visible { border-radius: 0; box-shadow: var(--focus-inset); }  /* the group clips rings drawn outside */
+.segmented button[aria-pressed="true"]:focus-visible { box-shadow: inset 0 0 0 2px var(--paper), inset 0 0 0 4px var(--navy-dark); }
 
 /* buttons */
 .button {
@@ -247,14 +250,19 @@ a:hover { color: var(--navy-dark); }
   .facts div { padding: var(--s4); }
   .facts dt { font-size: var(--text-xl); }
   .entry-head { flex-direction: column; gap: 0; }
-  .button { min-height: var(--touch); }
+  .button, .button.small { min-height: var(--touch); }
   .segmented { display: flex; width: 100%; }
   .segmented button { flex: 1 1 auto; min-height: var(--touch); padding: 0 var(--s3); }
   .downloads li { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
-  .downloads a { padding-bottom: 0; min-height: 0; }
+  .downloads a { display: flex; align-items: center; padding-top: var(--s2); padding-bottom: var(--s1); min-height: var(--touch); }
   .downloads span { padding: 0 var(--s5) var(--s3); }
   .skills div { padding: var(--s4); }
   .languages div { padding: var(--s3) var(--s4); }
+}
+
+/* people who ask their system for less motion get no colour fades either */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }
 
 /* printing the page gives a clean document */

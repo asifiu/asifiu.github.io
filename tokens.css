@@ -16,7 +16,7 @@
   --act-ink: #8a5a0b;  --act-bg: #fbf1dd;    /* needs your action */
   --done-ink: #2f6b3a; --done-bg: #e6f1e8;   /* done, applied */
   --bad-ink: #9b2c2c;  --bad-bg: #f7e4e4;    /* problem, rejected */
-  --slate: #8d9aa8;                           /* chart comparison series */
+  --slate: #7b8794;                           /* chart comparison series: 3.7 : 1 on white (data marks need 3 : 1) */
 
   /* type */
   --font-display: Cambria, Georgia, "Times New Roman", serif;
@@ -41,7 +41,8 @@
   --radius: 3px;
   --radius-lg: 4px;
   --shadow: none;           /* separate with hairlines, not shadows */
-  --focus: 0 0 0 3px #9cc3dc;
+  --focus: 0 0 0 2px var(--paper), 0 0 0 4px var(--navy);  /* keyboard focus: white gap + navy ring, 9.6 : 1 */
+  --focus-inset: inset 0 0 0 2px var(--navy), inset 0 0 0 4px var(--paper);  /* inside boxes that clip their edges */
   --control: 40px;          /* height of buttons and fields */
   --touch: 44px;            /* the same on phones and touch screens */
   --measure: 68ch;          /* longest reading line */
