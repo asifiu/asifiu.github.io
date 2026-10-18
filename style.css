@@ -63,6 +63,11 @@ a, button, summary, label { touch-action: manipulation; }
 .tag { display: inline-block; padding: 2px var(--s2); margin-right: var(--s1); background: var(--accent); color: var(--paper); font-weight: 700; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s4); }
 
+/* language switch (EN | DE) and the German page's language note */
+.site nav a.lang { font-weight: 700; color: var(--accent); }
+.site nav a.lang:hover { color: var(--black); }
+.lang-note { font-size: 15px; margin-top: var(--s2); }
+
 /* role switcher */
 .focus { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3); margin-top: var(--s5); }
 .focus-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
