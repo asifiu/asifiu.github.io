@@ -1,7 +1,8 @@
 "use strict";
 
 // Small helpers for the portfolio. The page works without this file: the menu then stays open,
-// nothing is highlighted and the IT support CV is the main download. Nothing is stored in the browser.
+// nothing is highlighted, nothing slides in and the IT support CV is the main download.
+// Nothing is stored in the browser.
 
 document.documentElement.classList.add("js");  // lets style.css fold the phone menu only when this runs
 
@@ -9,7 +10,37 @@ document.addEventListener("DOMContentLoaded", () => {
   setUpMenu();
   setUpSectionHighlight();
   setUpRoleSwitcher();
+  setUpReveal();
 });
+
+// ------------------------------------------------------------ boxes slide up as they come into view
+
+const REVEAL = ".facts > div, .role, .entry, .figures .chart, .skills > div, .languages, .quote, .contact .two-col > div";
+
+function setUpReveal() {
+  // Only when the browser can tell what is on screen and the visitor has not asked for less motion;
+  // otherwise everything simply stays visible.
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.filter((entry) => entry.isIntersecting).forEach((entry, order) => {
+      observer.unobserve(entry.target);
+      setTimeout(() => entry.target.classList.add("is-visible"), order * 60);  // boxes arriving together come one by one
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  for (const box of document.querySelectorAll(REVEAL)) {
+    box.classList.add("reveal");
+    observer.observe(box);
+  }
+  // Safety net for very fast scrolling or a jump from the menu: anything on screen or above it is shown.
+  let waiting = null;
+  const catchUp = () => {
+    waiting = null;
+    for (const box of document.querySelectorAll(".reveal:not(.is-visible)")) {
+      if (box.getBoundingClientRect().top < window.innerHeight) { observer.unobserve(box); box.classList.add("is-visible"); }
+    }
+  };
+  window.addEventListener("scroll", () => { if (!waiting) waiting = setTimeout(catchUp, 200); }, { passive: true });
+}
 
 // ------------------------------------------------------------ phone menu
 
@@ -86,7 +117,7 @@ function choose(role, fromClick) {
   // GoatCounter name, so the stats still show which CV was taken).
   for (const item of document.querySelectorAll("[data-show]")) item.hidden = !item.dataset.show.split(" ").includes(role);
 
-  // The figure that matters most for this role gets a navy frame.
+  // The figure that matters most for this role gets a coloured frame.
   for (const fact of document.querySelectorAll(".facts [data-for]")) fact.classList.toggle("is-picked", fact.dataset.for === role);
 
   // For data roles the thesis is the strongest proof, so Projects comes before Experience,

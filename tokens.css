@@ -18,6 +18,11 @@
   --bad-ink: #9b2c2c;  --bad-bg: #f7e4e4;    /* problem, rejected */
   --slate: #7b8794;                           /* chart comparison series: 3.7 : 1 on white (data marks need 3 : 1) */
 
+  /* the accent of a page: navy here (CVs, dashboard); the portfolio sets its own in portfolio-theme.css */
+  --accent: var(--navy);
+  --accent-dark: var(--navy-dark);
+  --accent-tint: var(--navy-tint);
+
   /* type */
   --font-display: Cambria, Georgia, "Times New Roman", serif;
   --font-text: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
@@ -41,8 +46,8 @@
   --radius: 3px;
   --radius-lg: 4px;
   --shadow: none;           /* separate with hairlines, not shadows */
-  --focus: 0 0 0 2px var(--paper), 0 0 0 4px var(--navy);  /* keyboard focus: white gap + navy ring, 9.6 : 1 */
-  --focus-inset: inset 0 0 0 2px var(--navy), inset 0 0 0 4px var(--paper);  /* inside boxes that clip their edges */
+  --focus: 0 0 0 2px var(--paper), 0 0 0 4px var(--accent);  /* keyboard focus: white gap + accent ring */
+  --focus-inset: inset 0 0 0 2px var(--accent), inset 0 0 0 4px var(--paper);  /* inside boxes that clip their edges */
   --control: 40px;          /* height of buttons and fields */
   --touch: 44px;            /* the same on phones and touch screens */
   --measure: 68ch;          /* longest reading line */
